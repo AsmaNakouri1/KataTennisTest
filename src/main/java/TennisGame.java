@@ -11,14 +11,18 @@ public class TennisGame {
     }
 
     public void firstPlayerWinsOnePoint() {
-        scoreTennisGame.firstPlayerAddsOnePointToScore();
+        scoreTennisGame.firstPlayerWinsOnePoint();
     }
 
     public void secondPlayerWinsOnePoint() {
-        scoreTennisGame.secondPlayerAddsOnePointToScore();
+        scoreTennisGame.secondPlayerWinsOnePoint();
     }
 
     public void setScoreTennisGame(ScoreTennisGame scoreTennisGame){
         this.scoreTennisGame = scoreTennisGame;
+    }
+
+    public String getScoreSet() {
+        return scoreTennisGame.getScoreSet();
     }
 }

@@ -7,16 +7,21 @@ public class ScoreGame {
         this.scoreGamePlayerTow = 0;
     }
 
-    public void firstPlayerAddsOnePointToGameScore() {
-        if(scoreGamePlayerOne>=3) firstPlayerWinsOnePointAndTheScoreIsMoreThenThreePoints();
-        else
-            scoreGamePlayerOne = scoreGamePlayerOne + 1;    }
+    public Boolean firstPlayerAddsOnePointToGameScore() {
+        if(scoreGamePlayerOne>=3){
+            return firstPlayerWinsOnePointAndTheScoreIsMoreThenThreePoints();
+        }
+        scoreGamePlayerOne = scoreGamePlayerOne + 1;
+        return false;
+    }
 
-    private void firstPlayerWinsOnePointAndTheScoreIsMoreThenThreePoints() {
-        if(scoreGamePlayerOne>scoreGamePlayerTow)
+    private Boolean firstPlayerWinsOnePointAndTheScoreIsMoreThenThreePoints() {
+        if(scoreGamePlayerOne>scoreGamePlayerTow) {
             firstPlayerWinsOneGame();
-        else
+            return true;
+        }
             firstPlayerChangesHisGameScore();
+            return false;
     }
 
     private void firstPlayerWinsOneGame() {
@@ -35,18 +40,20 @@ public class ScoreGame {
     }
 
 
-    public void secondPlayerAddsOnePointToGameScore() {
-        if(scoreGamePlayerTow>=3) secondPlayerWinsOnePointAndTheScoreIsMoreThenThreePoints();
-        else
-            scoreGamePlayerTow = scoreGamePlayerTow + 1;
+    public Boolean secondPlayerAddsOnePointToGameScore() {
+        if(scoreGamePlayerTow>=3) return secondPlayerWinsOnePointAndTheScoreIsMoreThenThreePoints();
+
+        scoreGamePlayerTow = scoreGamePlayerTow + 1;
+        return false;
     }
 
-    private void secondPlayerWinsOnePointAndTheScoreIsMoreThenThreePoints() {
-        if(scoreGamePlayerTow>scoreGamePlayerOne)
+    private Boolean secondPlayerWinsOnePointAndTheScoreIsMoreThenThreePoints() {
+        if(scoreGamePlayerTow>scoreGamePlayerOne) {
             secondPlayerWinsOneGame();
-        else
-            secondPlayerChangesHisGameScore();
-
+            return true;
+        }
+        secondPlayerChangesHisGameScore();
+        return false;
     }
 
     private void secondPlayerChangesHisGameScore() {
