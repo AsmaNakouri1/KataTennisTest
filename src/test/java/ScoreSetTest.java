@@ -86,4 +86,68 @@ public class ScoreSetTest {
         tennisGame.secondPlayerWinsOnePoint();
         assertThat(tennisGame.getScoreSet()).isEqualTo("1 _ 6");
     }
+    @Test
+    public void  should_display_7_5_as_set_score_when_the_first_player_wins_one_point_and_the_score_game_was_ADV_40_and_the_score_set_was_6_to_5(){
+        TennisGame tennisGame = new TennisGame();
+
+        ScoreGame scoreGame = new ScoreGame();
+        scoreGame.setScoreGamePlayerOne(4);
+        scoreGame.setScoreGamePlayerTow(3);
+
+        ScoreSet scoreSet = new ScoreSet();
+        scoreSet.setScoreSetPlayerOne(6);
+        scoreSet.setScoreSetPlayerTow(5);
+
+        ScoreTennisGame scoreTennisGame = new ScoreTennisGame();
+        scoreTennisGame.setScoreGame(scoreGame);
+        scoreTennisGame.setScoreSet(scoreSet);
+
+        tennisGame.setScoreTennisGame(scoreTennisGame);
+
+
+        tennisGame.firstPlayerWinsOnePoint();
+        assertThat(tennisGame.getScoreSet()).isEqualTo("7 _ 5");
+
+    }
+
+    @Test
+    public void Should_display_6_6_as_score_set_when_the_second_player_wins_one_point_and_the_the_score_set_was_6_to_6(){
+        TennisGame tennisGame = new TennisGame();
+
+        ScoreSet scoreSet = new ScoreSet();
+        scoreSet.setScoreSetPlayerOne(6);
+        scoreSet.setScoreSetPlayerTow(6);
+
+        ScoreTennisGame scoreTennisGame = new ScoreTennisGame();
+        scoreTennisGame.setScoreSet(scoreSet);
+
+        tennisGame.setScoreTennisGame(scoreTennisGame);
+
+
+        tennisGame.secondPlayerWinsOnePoint();
+
+        assertThat(tennisGame.getScoreSet()).isEqualTo("6 _ 6");
+    }
+
+    @Test
+    public void Should_display_Player_1_wins_the_match_when_the_first_player_wins_one_point_and_the_score_tie_break_was_6_2(){
+        TennisGame tennisGame = new TennisGame();
+
+        ScoreSet scoreSet = new ScoreSet();
+        scoreSet.setScoreSetPlayerOne(6);
+        scoreSet.setScoreSetPlayerTow(6);
+
+        TieBreakScore tieBreakScore = new TieBreakScore();
+        tieBreakScore.setScoreTieBreakPlayerOne(6);
+        tieBreakScore.setScoreTieBreakPlayerTow(2);
+
+        ScoreTennisGame scoreTennisGame = new ScoreTennisGame();
+        scoreTennisGame.setScoreSet(scoreSet);
+        scoreTennisGame.setTieBreakScore(tieBreakScore);
+
+        tennisGame.setScoreTennisGame(scoreTennisGame);
+
+        tennisGame.firstPlayerWinsOnePoint();
+        assertThat(tennisGame.getScoreSet()).isEqualTo("7 _ 6");
+    }
 }

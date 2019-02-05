@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class ScoreSet {
     private Integer scoreSetPlayerOne;
     private Integer scoreSetPlayerTow;
@@ -31,4 +33,8 @@ public class ScoreSet {
         this.scoreSetPlayerTow = scoreSetPlayerTow;
     }
 
+    public Boolean scoreSetIsSixToSix(){
+        if (scoreSetPlayerOne == 6 && scoreSetPlayerTow ==6) return true;
+        return false;
+    }
 }
